@@ -3,7 +3,7 @@
 #' @keywords 
 parse_rf_dat = function(data.path,
                        dat.type = c("ds", "pm"),
-                       rm.dat = c("rm", "cs")
+                       rm.dat = c("rm", "cs"),
                        outcome.var = NULL) {
   dat.type = match.arg(dat.type)
   rm.dat = match.arg(rm.dat)
