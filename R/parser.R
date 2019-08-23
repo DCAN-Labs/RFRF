@@ -1,8 +1,6 @@
 #' Parse input data and return user params, datatype, unformatted data
 #' @return Returns missing data info, unformatted data, user inputs, data type in a list
 #' @keywords 
-
-source(paste(dirname(rstudioapi::getSourceEditorContext()$path), "check_num_mat.R", sep="/"))
 parse.rf.dat = function(data.path,
                        dat.type = c("ds", "pm"),
                        outcome.var = NULL) {
