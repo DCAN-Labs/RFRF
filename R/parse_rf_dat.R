@@ -1,6 +1,6 @@
 #' Parse input data and return user params, datatype, unformatted data
 #' @return Returns missing data info, unformatted data, user inputs, data type in a list
-#' @keywords 
+#' @keywords parse
 parse_rf_dat = function(data.path,
                        dat.type = c("ds", "pm"),
                        rm.dat = c("rm", "cs"),
