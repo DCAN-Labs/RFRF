@@ -41,7 +41,7 @@ parse_rf_dat = function(data.path,
 
   
   ######## check for missing data ########
-  if (flag_var_missing_grtr_15per(format.dat)[[1]]) {
+  if (flag_missing_grtr_15per(format.dat, dim = "vars")[[1]]) {
     
     if (dat.type == "pm") {
       
@@ -49,16 +49,16 @@ parse_rf_dat = function(data.path,
       
     } else {
       
-      if (flag_var_missing_grtr_15per(format.dat)[[1]]) {
+      if (flag_missing_grtr_15per(format.dat, , dim = "vars")[[1]]) {
         
-        mask = flag_var_missing_grtr_15per(format.dat)[[2]]
+        mask = flag_missing_grtr_15per(format.dat, dim = "vars")[[2]]
         warning(paste("The following variabes are missing more than 15% of their data: ", paste(names(format.dat)[mask], collapse=' '), sep=""))
         
       }
       
-      if (flag_sub_missing_grtr_15per(format.dat)[[1]]) {
+      if (flag_missing_grtr_15per(format.dat, dim = "subs")[[1]]) {
         
-        mask = flag_sub_missing_grtr_15per(format.dat)[[2]]
+        mask = flag_missing_grtr_15per(format.dat, dim = "subs")[[2]]
         warning(paste("The following cases are missing more than 15% of their data: ", paste(which(mask), collapse=' '), sep=""))
         
       }
