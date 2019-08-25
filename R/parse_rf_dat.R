@@ -68,22 +68,4 @@ parse_rf_dat = function(data.path,
   }
   
   
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 }
