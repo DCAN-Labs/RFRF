@@ -74,7 +74,7 @@ ncols: int]
 
 #cross-validation diagram -- cross validation tak
 #cross validation takes in a training dataset and produces stratified fold to send through RF_train and RF_test
-CV_UMN_diagram="#stroke: #000000
+CV_UML_diagram="#stroke: #000000
 #direction: down
 #padding: 4
 #spacing: 20
@@ -246,14 +246,15 @@ subtype_ID_diagram="#stroke: #000000
 #fontsize: 10
 #gutter: 20
 #.testbox: #fill=#00FFFF
-[<frame> Subtype ID Diagram|
+[<frame>Subtype ID Diagram|
 [RF Prediction | proximity: array
 yvar: data.frame
 yvar.names: string
 xvar: data.frame
 xvar.names: string
-err.rate: float|
-get.auc()] -:> [matrix to graph |
+err.rate: float |
+get.auc()]
+[RF Prediction] -:> [matrix to graph |
 adjmatrix: array
 mode: undirected
 weighted: TRUE
@@ -266,12 +267,24 @@ nrows: int
 ncols: int]
 [<testbox>Test Data] -:> [matrix to graph]
 [matrix to graph] -:> [proximity graph |
-proximity_graph: graph] -:> [community detection function |
+proximity_graph: graph]
+[proximity graph] -:> [community detection function |
 cluster_infomap()]
 ]"
 
 #interface diagram for RFRF
-interface_diagram="blah"
+interface_diagram="#stroke: #000000
+#direction: down
+#padding: 4
+#spacing: 20
+#fontsize: 10
+#gutter: 20
+#.testbox: #fill=#00FFFF
+[<frame>Interface Diagram|
+
+[<testbox> TEST]
+]"
+
 #diagram visualization (saving may not work properly within RStudio)
 nomnoml(code = flow_diagram,png='flow_diagram.png')
 nomnoml(code = Holdout_UML_diagram,png='holdout_UML_diagram.png')
