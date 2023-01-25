@@ -288,3 +288,10 @@ interface_diagram="#stroke: #000000
 #diagram visualization (saving may not work properly within RStudio)
 nomnoml(code = flow_diagram,png='flow_diagram.png')
 nomnoml(code = Holdout_UML_diagram,png='holdout_UML_diagram.png')
+nomnoml(code = CV_UML_diagram,png='CV_UML_diagram.png')
+nomnoml(code = RF_train_diagram,png='RF_train_diagram.png')
+nomnoml(code = RF_test_diagram,png='RF_train_diagram.png')
+nomnoml(code = RF_model_diagram,png='RF_train_diagram.png')
+nomnoml(code = subtype_ID_diagram,png='RF_train_diagram.png')
+
+
