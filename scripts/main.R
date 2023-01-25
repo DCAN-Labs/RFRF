@@ -6,7 +6,7 @@ getAllData <- function(csvInputFileName) {
   return(data)
 }
 
-trainTestSplit <- function(df) {
+split_data <- function(df) {
   #make this example reproducible
   set.seed(1)
 
