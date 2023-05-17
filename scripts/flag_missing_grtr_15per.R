@@ -1,6 +1,6 @@
 #' Checks whether certain subjects or variables are missing more than 15% of their data
+#` @param frmtdat formatted data object
 #' @return Returns TRUE for yes, FALSE for no, as well as a mask of the subs/vars > 15% missing data
-
 flag_missing_grtr_15per = function(frmtdat, dim = c("subs", "vars")) {
   
   #frmtdat = match.arg(frmtdat)
