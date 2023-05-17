@@ -1,6 +1,8 @@
-# TODO RFSRC
-
-library(dplyr)
+#' Split data
+#' 
+#' Split data into training and validation.
+#' 
+#' @import dplyr
 
 # Questions:
 # * What does stratify_data() do?  Should it do this kind of thing:
