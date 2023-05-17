@@ -1,5 +1,5 @@
-InputDataTypeEnum.gen <- setSingleEnum("InputDataType",
-                                levels = c("ds", "pm"))
+InputDataTypeEnum.gen <- setSingleEnum("Shape",
+                                levels = c("circle", "line", "rectangle"))
 
 #' Parse input data and return user params, datatype, unformatted data
 #' @return Returns missing data info, unformatted data, user inputs, data type in a list
