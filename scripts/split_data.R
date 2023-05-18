@@ -3,7 +3,7 @@
 #' Split data into training and validation.
 #'
 #' @import dplyr
-
+#' @export
 
 getAllData <- function(csvInputFileName) {
   data <- read.csv(file = csvInputFileName)
