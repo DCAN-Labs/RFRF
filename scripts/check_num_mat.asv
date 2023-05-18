@@ -5,7 +5,7 @@
 #'
 #' @return TRUE if and only if all the elements in the matrix are numeric
 #' @examples
-#' check_num_mat(
+#' check_num_mat([1 2 3 4]
 check_num_mat = function(mat2check) {
   
   ans = sum(sapply(as.matrix(mat2check), is.numeric))/length(sapply(as.matrix(mat2check), is.numeric))
