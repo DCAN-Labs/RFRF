@@ -1,3 +1,9 @@
-check_num_mat_expected = 1
+function tests = test_check_num_mat
+tests = functiontests(localfunctions)
+end
 
-testthat.expect_equal(check_num_mat_expected, [1 2 3 4])
+function testMatrixOfNumbers(testCase)
+actSolution = check_num_mat([1.0 2.0 3.0 4.0])
+expSolution = 1
+verifyEqual(testCase, actSolution, expSolution)
+end
