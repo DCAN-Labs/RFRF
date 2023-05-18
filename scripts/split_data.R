@@ -1,12 +1,9 @@
 #' Split data
-#' 
+#'
 #' Split data into training and validation.
-#' 
+#'
 #' @import dplyr
 
-# Questions:
-# * What does stratify_data() do?  Should it do this kind of thing:
-#     https://www.rdocumentation.org/packages/splitstackshape/versions/1.4.8/topics/stratified
 
 getAllData <- function(csvInputFileName) {
   data <- read.csv(file = csvInputFileName)
@@ -24,10 +21,6 @@ split_data <- function(df, holdout_fraction) {
   results <- list(train, test)
 
   return(results)
-}
-
-stratify_data <- function(df, stratify_by, even_stratification) {
-
 }
 
 randomize <- function(data) {
