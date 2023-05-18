@@ -24,7 +24,7 @@ split_data <- function(df, holdout_fraction) {
 }
 
 randomize <- function(data) {
-  shuffled_data= data[sample(1:nrow(data)), ]
+  shuffled_data = data[sample(1:nrow(data)), ]
 
   return(shuffled_data)
 }
