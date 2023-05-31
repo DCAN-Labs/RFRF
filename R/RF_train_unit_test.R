@@ -17,7 +17,7 @@ training_dataset <- simulate_data(number_of_training_participants,covariance_mat
 #train the RF model
 random_forest <- RF_Train(ntrain_folds,training_dataset,formula,mtry,nodesize)
 
-#check the outputs
+#check the outputs (TODO: replaced by a search/these things equal, with usethis and testthat )
 print(random_forest$call)
 print(random_forest$mtry)
 print(random_forest$nodesize)
