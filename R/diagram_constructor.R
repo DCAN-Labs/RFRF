@@ -165,16 +165,16 @@ ID column: string
 Outcome Column: string
 nrows: int
 ncols: int]
-[<forestbox> Random Forest] -:> [Predict RFSRC | hyperparameter: string
+[<forestbox> Random Forest] -:> [RF Test | hyperparameter: string
 file.name: string
 | predict.rfsrc()
-write.tsv()]
-[<testbox>Test Fold] -:> [Predict RFSRC]
-[Predict RFSRC] -:> [<optimalbox>Optimal RF Parameters | call: string
+write.tsv()
+get.auc()]
+[<testbox>Test Fold] -:> [RF Test]
+[RF Test] -:> [<optimalbox>Optimal RF Parameters | call: string
 mtry: int
 nodesize: int
-err.rate: float|
-get.auc()]
+err.rate: float]
 ]"
 
 #RF model diagram
