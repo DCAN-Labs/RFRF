@@ -16,7 +16,7 @@ test_that("RF_train", {
   #testing_dataset <- simulate_data(number_of_testing_participants,covariance_matrix,outcome_column,means)
 
   #train the RF model
-  random_forest <- RF_Train(ntrain_folds,training_dataset,formula,mtry,nodesize)
+  random_forest <- RF_Train(training_dataset,formula,mtry,nodesize)
 
   #check the outputs (TODO: replaced by a search/these things equal, with usethis and testthat )
   expect_equal(random_forest$call)

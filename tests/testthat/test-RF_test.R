@@ -3,8 +3,8 @@
 test_that("RF_Test", {
 
   # declare remaing expected input variables for RF_Test
-  hyperparameter <- rfsrc()
-  file.name <- "example_name.tsv"
+  model.type <- rfsrc()
+  # file.name <- "example_name.tsv"
   file_path = "./R/RF_train_unit_test.R"
   source(file_path)
   number_of_testing_participants <- 10
@@ -16,7 +16,7 @@ test_that("RF_Test", {
   testing_dataset <- simulate_data(number_of_testing_participants,covariance_matrix,outcome_column,means)
 
   #test the RF_Test function
-  Optimal_RF_Parameters <- RF_Test(hyperparameter, file.name, random_forest, testing_dataset)
+  Optimal_RF_Parameters <- RF_Test(random_forest, testing_dataset, proximity_flag)
 
 
   #check the outputs, 'expect_' should have two main arguments, which 'expect_' function do we want?
