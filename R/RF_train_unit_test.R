@@ -9,13 +9,16 @@ number_of_training_participants <- 10
 covariance_matrix <- diag(2)
 outcome_column <- 1
 means <- c(0,0)
+nodesize <- 1
+formula <- y~x
+mtry <- 1
 
 #create simulated data for the RF_train
 training_dataset <- simulate_data(number_of_training_participants,covariance_matrix,outcome_column,means)
 #testing_dataset <- simulate_data(number_of_testing_participants,covariance_matrix,outcome_column,means)
 
 #train the RF model
-random_forest <- RF_Train(ntrain_folds,training_dataset,formula,mtry,nodesize)
+random_forest <- RF_train(data=training_dataset,formula=formula,mtry=mtry,nodesize=nodesize)
 
 #check the outputs (TODO: replaced by a search/these things equal, with usethis and testthat )
 print(random_forest$call)

@@ -17,7 +17,7 @@
   testing_dataset <- simulate_data(number_of_testing_participants,covariance_matrix,outcome_column,means)
 
   #test the RF_Test function
-  Optimal_RF_Parameters <- RF_Test(hyperparameter, file.name, random_forest, testing_dataset)
+  Optimal_RF_Parameters <- RF_test(object=random_forest, newdata=testing_dataset)
 
   #check the outputs
   print(Optimal_RF_Parameters$call)
