@@ -16,5 +16,5 @@ simulate_data <- function(number_of_participants=3, covariance_matrix=diag(2), o
   data=list()
   data["y"] <- list(sim_data[,outcome_column])
   data["x"] <- list(sim_data[,outcome_column*-1])
-  return(data)
+  return(data.frame(data))
 }
