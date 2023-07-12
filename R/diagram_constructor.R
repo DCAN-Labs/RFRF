@@ -124,12 +124,12 @@ ncols: int]
 data: data.frame
 formula: string
 mtry: int
-nodesize: int | rfsrc()
+nodesize: int
+Model Select | rfsrc()
 rfsrc.fast()
 sidClustering.rfsrc()
 imbalanced.rfsrc()
 quantreg.rfsrc()]
-[Model Select] -:> [RF Train]
 [RF Train] -:> [<forestbox> Random Forest | call: string
 mtry: int
 nodesize: int
@@ -165,13 +165,13 @@ ID column: string
 Outcome Column: string
 nrows: int
 ncols: int]
-[<forestbox> Random Forest] -:> [RF Test | hyperparameter: string
+[<forestbox> Random Forest] -:> [RF_test | hyperparameter: string
 file.name: string
 | predict.rfsrc()
 write.tsv()
-get.auc()]
-[<testbox>Test Fold] -:> [RF Test]
-[RF Test] -:> [<optimalbox>Optimal RF Parameters | call: string
+get_auc()]
+[<testbox>Test Fold] -:> [RF_test]
+[RF_test] -:> [<optimalbox>Optimal RF Parameters | call: string
 mtry: int
 nodesize: int
 err.rate: float]
@@ -290,8 +290,8 @@ nomnoml(code = flow_diagram,png='flow_diagram.png')
 nomnoml(code = Holdout_UML_diagram,png='holdout_UML_diagram.png')
 nomnoml(code = CV_UML_diagram,png='CV_UML_diagram.png')
 nomnoml(code = RF_train_diagram,png='RF_train_diagram.png')
-nomnoml(code = RF_test_diagram,png='RF_train_diagram.png')
-nomnoml(code = RF_model_diagram,png='RF_train_diagram.png')
-nomnoml(code = subtype_ID_diagram,png='RF_train_diagram.png')
+nomnoml(code = RF_test_diagram,png='RF_test_diagram.png')
+nomnoml(code = RF_model_diagram,png='RF_model_diagram.png')
+nomnoml(code = subtype_ID_diagram,png='Subtype_ID_diagram.png')
 
 
