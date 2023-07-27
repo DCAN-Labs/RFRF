@@ -1,8 +1,8 @@
 #' RF_train
 #'
 #' this function trains a random forest model with training data folds
-#' @param ntrain_folds #is this parameter being used here?
-#' @param data
+#' @param ntrain_folds number of training folds
+#' @param data the training dataset
 #' @param formula
 #' @param mtry
 #' @param nodesize

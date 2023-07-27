@@ -2,6 +2,7 @@
 
 test_that("RF_train", {
 
+  library("RFRF")
   #declare our expected input variables
   number_of_training_participants <- 10
   #number_of_testing_participants <- 10
@@ -30,5 +31,5 @@ test_that("RF_train", {
   expect_true(random_forest$xvar, is.data.frame(xvar))
   expect_type(random_forest$xvar.names, "character")
   expect_true(random_forest$forest$forest)
-  #expect_equal(2 * 2, 4)
+  expect_equal(2 * 2, 5)
 })

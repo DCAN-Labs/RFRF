@@ -1,7 +1,8 @@
-  #This script is a unit test to ensure that RF_Test produces expected outputs
+#This script is a unit test to ensure that RF_Test produces expected outputs
 
-test_that("RF_Test", {
+test_that("RF_test", {
 
+  library("RFRF")
   # declare remaing expected input variables for RF_Test
   model.type <- rfsrc()
   # file.name <- "example_name.tsv"
