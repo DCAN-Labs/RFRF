@@ -112,7 +112,7 @@ RF_train_diagram="#stroke: #000000
 #gutter: 20
 #.databox: #fill=#FFFF00
 #.forestbox: #fill=#FF1111
-[<frame> RF Train Diagram|
+[<frame> RF train Diagram|
 [<databox>Train Folds| ntrain_folds: int
 data: data.frame
 ID column: string
@@ -120,17 +120,19 @@ Outcome Column: string
 nrows: int
 ncols: int]
 [Model Select | hyperparameter: string | model_choice()]
-[<databox>Train Folds] -:> [RF Train | ntrain_folds: int
+[<databox>Train Folds] -:> [RF train | Model Select
+ntrain_folds: int
 data: data.frame
 formula: string
 mtry: int
 nodesize: int
-Model Select | rfsrc()
+tune.rfsrc() | rfsrc()
 rfsrc.fast()
 sidClustering.rfsrc()
 imbalanced.rfsrc()
 quantreg.rfsrc()]
-[RF Train] -:> [<forestbox> Random Forest | call: string
+[Model Select] -:> [RF train]
+[RF train] -:> [<forestbox> Random Forest | call: string
 mtry: int
 nodesize: int
 yvar: data.frame
