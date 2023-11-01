@@ -1,8 +1,14 @@
+.Rbuildignore
+RFRF.proj
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
+<<<<<<< HEAD
 .Rdata
 .httr-oauth
 .DS_Store
 .quarto
+=======
+.Rproj.user/*
+>>>>>>> 443702fb2b8c5cf26f5ce2b9494e4f87256c2730
