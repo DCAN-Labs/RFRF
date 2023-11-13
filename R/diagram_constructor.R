@@ -193,6 +193,7 @@ RF_model_diagram="#stroke: #000000
 #.optimalbox: #fill=#FF7777
 #.forestbox: #fill=#FF1111
 #.trainbox: #fill=#FFFF00
+#.predictbox: #fill=#FF007F
 [<frame> RF Model Diagram|
 [<optimalbox>Optimal RF Parameters | call: string
 mtry: int
@@ -231,7 +232,7 @@ Outcome Column: string
 nrows: int
 ncols: int]
 [<testbox>Test Data] -:> [RF Optimal Test]
-[RF Optimal Test] -:> [RF Prediction | proximity: array
+[RF Optimal Test] -:> [<predictbox> RF Prediction | proximity: array
 yvar: data.frame
 yvar.names: string
 xvar: data.frame
@@ -294,6 +295,7 @@ nomnoml(code = CV_UML_diagram,png='CV_UML_diagram.png')
 nomnoml(code = RF_train_diagram,png='RF_train_diagram.png')
 nomnoml(code = RF_test_diagram,png='RF_test_diagram.png')
 nomnoml(code = RF_model_diagram,png='RF_model_diagram.png')
-nomnoml(code = subtype_ID_diagram,png='Subtype_ID_diagram.png')
+nomnoml(code = subtype_ID_diagram,png='subtype_ID_diagram.png')
+
 
 
