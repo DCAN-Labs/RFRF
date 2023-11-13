@@ -9,15 +9,17 @@ test_that("RF_train", {
   covariance_matrix <- diag(2)
   outcome_column <- 1
   means <- c(0,0)
+  formula = y~x
   mtry <- 1
   nodesize <- 1
+  model_type = "rfsrc"
 
   #create simulated data for the RF_train
   training_dataset <- simulate_data(number_of_training_participants,covariance_matrix,outcome_column,means)
   #testing_dataset <- simulate_data(number_of_testing_participants,covariance_matrix,outcome_column,means)
 
   #train the RF model
-  random_forest <- RF_Train(training_dataset,formula,mtry,nodesize)
+  random_forest <- RF_Train(training_dataset,formula,mtry,nodesize,model_type)
 
   #check the outputs (TODO: replaced by a search/these things equal, with usethis and testthat )
   expect_type(random_forest$call, "language")

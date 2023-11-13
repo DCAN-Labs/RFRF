@@ -2,10 +2,10 @@
 
 test_that("Subtype_ID", {
   #loads neccessary environment, packages, and dependencies
-  #library(RFRF)
-  
+  library(RFRF)
+
   # do we need to combine RF_Optimal_Test and RF_Prediction?
-  
+
   # declare the expected input variables for simulate_data
   number_of_testing_participants <- 10
   covariance_matrix <- diag(2)
@@ -18,22 +18,22 @@ test_that("Subtype_ID", {
   xvar <- data.frame # is.data.frame(xvar)
   xvar.names <- string # "character"
   err.rate <- float
-  
+
   # create simulated dataset for RF_prediction
   testing_dataset <- simulate_data(number_of_testing_participants,covariance_matrix,outcome_column,means)
-  
+
   # create matrix_to_graph
   matrix_to_graph <- RF_Prediction(proximity, yvar, yvar.names, xvar, xvar.names, err.rate, testing_dataset) # does testing_dataset need to be included here, or is it satisfied with xvar and yvar?
-  
+
   # check the outputs of matrix_to_graph
-  # needs a lot more review 
+  # needs a lot more review
   expect_true(matrix_to_graph$adjmatrix)
   expect_true(matrix_to_graph$mode)
   expect_true(matrix_to_graph$weighted)
   expect_true(matrix_to_graph$diag)
   #print(matrix_to_graph.graph_from_adjacency_mattrix())
-  
+
   # create proximity_graph
-  
+
   # check community detection function
 })
