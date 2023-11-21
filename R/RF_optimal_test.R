@@ -1,14 +1,10 @@
-#' RF_model
+#' RF_optimal_test
 #'
-#' this function trains then tests a random forest model with training and testing data folds
-#' @param training_dataset the training data
-#' @param formula
-#' @param Optimal_RF_Parameters returned from RF_test function
-#' @param model_type
+#' this function tests the optimal random forest model from RF_optimal_train with testing data folds
 #' @param optimal_random_forest the resulting object from RF_optimal_train function
 #' @param testing_dataset the heldout data from holdout function
 #' @param proximity_flag boolean; whether or not proximity should be calculated
-#' @keywords RF_optimal_train, RF_optimal_test
+#' @keywords RF_optimal_test
 #' @export
 #' @examples
 #' number_of_training_participants <- 10
@@ -27,11 +23,9 @@
 #' Optimal_RF_Parameters <- RF_Test(object=random_forest,newdata=testing_dataset,proximity=TRUE)
 #' optimal_random_forest <- RF_optimal_train(data=training_dataset,formula=y~x,Optimal_RF_Parameters=NULL,model_type="rfsrc")
 #' RF_prediction <- RF_optimal_test(object=optimal_random_forest,newdata=testing_dataset,proximity_flag=TRUE)
-#' RF_prediction <- RF_model(RF_optimal_train=RF_optimal_train,RF_optimal_test=RF_optimal_test)
 
-RF_model <- function(RF_optimal_train=RF_optimal_train,RF_optimal_test=RF_optimal_test){
+RF_optimal_test <- function(object=optimal_random_forest,newdata=testing_dataset,proximity_flag=TRUE){
   library(randomForestSRC)
-  optimal_random_forest = RF_optimal_train(data=training_dataset,formula=y~x,Optimal_RF_Parameters=NULL,model_type="rfsrc")
-  RF_prediction = RF_optimal_test(object=optimal_random_forest,newdata=testing_dataset,proximity_flag=TRUE)
+  RF_prediction = predict(object=object,newdata=newdata,proximity=proximity_flag)
   return(RF_prediction)
 }
