@@ -1,6 +1,6 @@
-#This script is a unit test to ensure that RF_model produces expected outputs
+#This script is a unit test to ensure that RF_optimal_test produces expected outputs
 
-test_that("RF_model", {
+test_that("RF_optimal_test", {
 
   library("RFRF")
   #declare our expected input variables
@@ -30,9 +30,6 @@ test_that("RF_model", {
 
   #test optimal random forest using testing dataset to return RF prediction (proximity matrix)
   RF_prediction <- RF_optimal_test(optimal_random_forest,testing_dataset,proximity_flag)
-
-  #test call of RF_model, but what are we returning?? how is it different from RF_optimal_test?? for now just leaving as RF_prediction
-  RF_prediction <- RF_model(RF_optimal_train,RF_optimal_test)
 
   #in the rf model diagram we see the final output being this "RF Prediction" object, but in the flow diagram the object is a proximity matrix. how do we connect the two?
   #check the outputs, 'expect_' should have two main arguments, which 'expect_' function do we want?

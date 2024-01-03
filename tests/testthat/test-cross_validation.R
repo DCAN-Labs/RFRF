@@ -1,0 +1,29 @@
+test_that("cross_validation_folds", {
+
+  library("RFRF")
+  #declare our expected input variables
+  number_of_participants <- 10
+  covariance_matrix <- diag(2)
+  outcome_column <- 1
+  means <- c(0,0)
+  seed <- set.seed(7)
+  groups <- rep(1:2, each = 5) #information on how the stratified data will be grouped
+  # need to switch this to number of folds instead of holdout fraction!?
+  holdout_fraction <- 0.8
+
+  #create simulated dataset for input data, should we be adding a test for the read_file function??
+  data <- simulate_data(number_of_participants,covariance_matrix,outcome_column,means)
+  randomized_data <- randomize(data=data,seed=seed)
+  #set rule to stratify by
+  stratified_data <- stratify_by(randomized_data=randomized_data, groups=groups)
+
+  #produce the stratified dataset, need to use nfolds instead of holdout_fraction
+  train_and_test <- split_data(stratified_data=stratified_data, holdout_fraction=holdout_fraction)
+
+  expect_is(train_and_test$training_dataset, "data.frame")
+  expect_is(train_and_test$testing_dataset, "data.frame")
+  expect_length(train_and_test, 2)
+  expect_equal(nrow(train_and_test$training_dataset) + nrow(train_and_test$testing_dataset), nrow(data))
+  ratio <- nrow(train_and_test$training_dataset)/nrow(data)
+  expect_equal(ratio, holdout_fraction)
+})
