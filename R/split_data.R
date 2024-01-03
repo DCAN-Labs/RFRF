@@ -11,6 +11,8 @@
 #' stratified_data <- stratify_by(randomized_data=randomized_data,groups=groups)
 #' train_and_test <- split_data(stratified_data=stratified_data,holdout_fraction=0.8)
 
+
+# how do we potentially incorporate stratify_by and even_stratification??
 split_data <- function(stratified_data, holdout_fraction){
   n = length(stratified_data)
   train_size = round(holdout_fraction * n)
@@ -18,7 +20,8 @@ split_data <- function(stratified_data, holdout_fraction){
   train_set = stratified_data[seq_len(train_size)]
   test_set = stratified_data[-seq_len(train_size)]
 
-  training_dataset = relist(train = train_set)
-  testing_dataset = relist(test = test_set)
-  return(data.frame(training_dataset),data.frame(testing_dataset))
+  training_dataset <- data.frame(train = train_set)
+  testing_dataset <- data.frame(test = test_set)
+
+  return(list(training_dataset = training_dataset, testing_dataset = testing_dataset))
 }

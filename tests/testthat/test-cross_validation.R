@@ -1,4 +1,4 @@
-test_that("holdout", {
+test_that("cross_validation_folds", {
 
   library("RFRF")
   #declare our expected input variables
@@ -8,6 +8,7 @@ test_that("holdout", {
   means <- c(0,0)
   seed <- set.seed(7)
   groups <- rep(1:2, each = 5) #information on how the stratified data will be grouped
+  # need to switch this to number of folds instead of holdout fraction!?
   holdout_fraction <- 0.8
 
   #create simulated dataset for input data, should we be adding a test for the read_file function??
@@ -16,7 +17,7 @@ test_that("holdout", {
   #set rule to stratify by
   stratified_data <- stratify_by(randomized_data=randomized_data, groups=groups)
 
-  #produce the stratified dataset
+  #produce the stratified dataset, need to use nfolds instead of holdout_fraction
   train_and_test <- split_data(stratified_data=stratified_data, holdout_fraction=holdout_fraction)
 
   expect_is(train_and_test$training_dataset, "data.frame")

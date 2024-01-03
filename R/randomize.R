@@ -11,6 +11,6 @@
 
 randomize <- function(data, seed = NULL){
   if (!is.null(seed)) set.seed(seed)
-  randomized_data = data[sample(nrow(data)), ]
+  randomized_data = data[sample(nrow(data)), ] # randomly reorders the rows of the data
   return(data.frame(randomized_data))
 }
