@@ -9,6 +9,7 @@
 #' simulate_data(number_of_participants=10, covariance_matrix=diag(2), outcome_column=1, means=c(0,0))
 #' randomized_data <- randomize(data=data, seed = 7)
 
+#incorporate a 'shuffle()', random number sampling could be deterministic
 randomize <- function(data, seed = NULL){
   if (!is.null(seed)) set.seed(seed)
   randomized_data = data[sample(nrow(data)), ] # randomly reorders the rows of the data

@@ -15,6 +15,7 @@ test_that("holdout", {
   randomized_data <- randomize(data=data,seed=seed)
   #set rule to stratify by
   stratified_data <- stratify_by(randomized_data=randomized_data, groups=groups)
+  # incorporate stratify_by check in expect_
 
   #produce the stratified dataset
   train_and_test <- split_data(stratified_data=stratified_data, holdout_fraction=holdout_fraction)
