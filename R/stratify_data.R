@@ -10,7 +10,7 @@
 #' randomized_data <- randomize(data=data, seed = 7)
 #' stratified_data <- stratify_by(randomized_data=randomized_data,groups=groups)
 
-stratify_by <- function(randomized_data, groups){
+stratify_data <- function(randomized_data, groups){
   grouped_data <- split(randomized_data, groups, drop=FALSE)
   stratified_data = unlist(grouped_data, recursive = FALSE)
   return(data.frame(stratified_data))

@@ -14,10 +14,10 @@ test_that("cross_validation_folds", {
   #create simulated dataset for input data, should we be adding a test for the read_file function??
   data <- simulate_data(number_of_participants,covariance_matrix,outcome_column,means)
   randomized_data <- randomize(data=data,seed=seed)
-  #set rule to stratify by
-  stratified_data <- stratify_by(randomized_data=randomized_data, groups=groups)
+  #set rule to stratify data
+  stratified_data <- stratify_data(randomized_data=randomized_data, groups=groups)
 
-  #produce the stratified dataset, need to use nfolds instead of holdout_fraction
+  #produce the split dataset into number of folds, need to use nfolds instead of holdout_fraction
   train_and_test <- split_data(stratified_data=stratified_data, holdout_fraction=holdout_fraction)
 
   expect_is(train_and_test$training_dataset, "data.frame")
