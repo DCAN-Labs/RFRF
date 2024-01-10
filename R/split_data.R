@@ -36,7 +36,7 @@ split_data <- function(stratified_data, holdout_fraction, nfolds){
 
     training_fold <- data.frame(train = train_fold)
     testing_fold <- data.frame(test = test_fold)
-
+    #needs to return a dataframe for each fold instead of train and test
     return(list(training_fold = training_fold, testing_fold = testing_fold))
   }
 }

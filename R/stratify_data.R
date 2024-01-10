@@ -2,7 +2,7 @@
 #'
 #' this function provides a stratified dataset to be used by the split_data function.
 #' @param randomized_data dataframe of the randomized data returned by the randomize function
-#' @param groups information on how the stratified data will be grouped
+#' @param groups information on how the stratified data will be grouped (name of column, index of column, vector)
 #' @keywords stratify
 #' @export
 #' @examples
