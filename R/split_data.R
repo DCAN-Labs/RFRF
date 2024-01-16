@@ -31,12 +31,10 @@ split_data <- function(stratified_data, holdout_fraction, nfolds){
     n = length(stratified_data)
     train_fold_size = round(n/nfolds)
 
-    train_fold = stratified_data[seq_len(train_fold_size)]
-    test_fold = stratified_data[-seq_len(train_fold_size)]
-
-    training_fold <- data.frame(train = train_fold)
-    testing_fold <- data.frame(test = test_fold)
-    #needs to return a dataframe for each fold instead of train and test
-    return(list(training_fold = training_fold, testing_fold = testing_fold))
+    for (fold in 1:nfolds)
+    {
+      fold[[fold]] <- data.frame(stratified_data[seq(from = train_fold_size*fold+1-train_fold_size, to = train_fold_size*fold)])
+    }
+    return(list(fold[[fold]]))
   }
 }
