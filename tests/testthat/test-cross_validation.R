@@ -21,6 +21,6 @@ test_that("cross_validation_folds", {
   folded_data <- split_data(stratified_data=stratified_data, nfolds=nfolds)
 
   expect_is(folded_data$fold[[1:nfolds]], "data.frame")
-  #expect_is(folded_data$testing_fold, "data.frame")
+  #expect_true(file.exists(groups), info = "Groups information should exist as a file")
   expect_length(folded_data, nfolds)
 })

@@ -26,4 +26,5 @@ test_that("holdout", {
   expect_equal(nrow(train_and_test$training_dataset) + nrow(train_and_test$testing_dataset), nrow(data))
   ratio <- nrow(train_and_test$training_dataset)/nrow(data)
   expect_equal(ratio, holdout_fraction)
+  #expect_true(file.exists(groups), info = "Groups information should exist as a file")
 })
