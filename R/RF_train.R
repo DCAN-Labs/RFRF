@@ -3,10 +3,10 @@
 #' this function trains a random forest model with training data folds
 #' @param ntrain_folds number of training folds
 #' @param data the training dataset
-#' @param formula
-#' @param mtry
-#' @param nodesize
-#' @param model_type
+#' @param formula formula describing the model fit
+#' @param mtry number of variables to possibly split at each node
+#' @param nodesize minimum size of terminal node
+#' @param model_type which type of rfsrc to use
 #' @keywords RF_train
 #' @export
 #' @examples

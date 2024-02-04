@@ -15,6 +15,14 @@ RF_train(
 \arguments{
 \item{data}{the training dataset}
 
+\item{formula}{formula describing the model fit}
+
+\item{mtry}{number of variables to possibly split at each node}
+
+\item{nodesize}{minimum size of terminal node}
+
+\item{model_type}{which type of rfsrc to use}
+
 \item{ntrain_folds}{number of training folds}
 }
 \description{

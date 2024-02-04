@@ -2,9 +2,9 @@
 #'
 #' this function trains the optimal random forest parameters with training folds
 #' @param training_dataset the training data
-#' @param formula
+#' @param formula formula describing the model fit
 #' @param Optimal_RF_Parameters returned from RF_test function
-#' @param model_type
+#' @param model_type which type of rfsrc to use
 #' @keywords RF_optimal_train
 #' @export
 #' @examples

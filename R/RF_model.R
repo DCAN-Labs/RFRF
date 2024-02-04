@@ -2,9 +2,9 @@
 #'
 #' this function trains then tests a random forest model with training and testing data folds
 #' @param training_dataset the training data
-#' @param formula
+#' @param formula formula describing the model fit
 #' @param Optimal_RF_Parameters returned from RF_test function
-#' @param model_type
+#' @param model_type which type of rfsrc to use
 #' @param optimal_random_forest the resulting object from RF_optimal_train function
 #' @param testing_dataset the heldout data from holdout function
 #' @param proximity_flag boolean; whether or not proximity should be calculated
