@@ -15,9 +15,9 @@
 
 
 # how do we potentially incorporate stratify_by and even_stratification??
-split_data <- function(stratified_data, holdout_fraction, nfolds){
+split_data <- function(stratified_data, holdout_fraction=0, nfolds=0){
   if (holdout_fraction > 0){ #may need to edit this condition
-    n = length(stratified_data)
+    n = nrow(stratified_data)
     train_size = round(holdout_fraction * n)
 
     train_set = stratified_data[seq_len(train_size)]
@@ -28,13 +28,15 @@ split_data <- function(stratified_data, holdout_fraction, nfolds){
 
     return(list(training_dataset = training_dataset, testing_dataset = testing_dataset))
   }else{
-    n = length(stratified_data)
+    n = nrow(stratified_data)
     train_fold_size = round(n/nfolds)
+    fold_list <- list()
 
     for (fold in 1:nfolds)
     {
-      fold[[fold]] <- data.frame(stratified_data[seq(from = train_fold_size*fold+1-train_fold_size, to = train_fold_size*fold)])
+      indices <- seq(from = train_fold_size*fold+1-train_fold_size, to = train_fold_size*fold)
+      fold_list[[fold]] <- stratified_data[indices, ]
     }
-    return(list(fold[[fold]]))
+    return(fold_list)
   }
 }

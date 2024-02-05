@@ -15,7 +15,7 @@
 #' outcome_column <- 1
 #' means <- c(0,0)
 #' training_dataset <- simulate_data(number_of_training_participants,covariance_matrix,outcome_column,means)
-#' random_forest <- RF_Train(data=training_dataset,formula=y~x,mtry=NULL,nodesize=NULL,model_type="rfsrc")
+#' random_forest <- RF_train(data=training_dataset,formula=y~x,mtry=NULL,nodesize=NULL,model_type="rfsrc")
 
 
 RF_train <- function(data=training_dataset,formula=y~x,mtry=NULL,nodesize=NULL,model_type="rfsrc"){

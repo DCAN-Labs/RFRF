@@ -20,8 +20,8 @@ test_that("holdout", {
   #produce the split dataset into train and test
   train_and_test <- split_data(stratified_data=stratified_data, holdout_fraction=holdout_fraction)
 
-  expect_is(train_and_test$training_dataset, "data.frame")
-  expect_is(train_and_test$testing_dataset, "data.frame")
+  expect_type(train_and_test$training_dataset, "data.frame")
+  expect_type(train_and_test$testing_dataset, "data.frame")
   expect_length(train_and_test, 2)
   expect_equal(nrow(train_and_test$training_dataset) + nrow(train_and_test$testing_dataset), nrow(data))
   ratio <- nrow(train_and_test$training_dataset)/nrow(data)
