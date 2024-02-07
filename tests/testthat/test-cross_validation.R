@@ -20,7 +20,7 @@ test_that("cross_validation_folds", {
   #produce the split dataset into number of folds
   folded_data <- split_data(stratified_data=stratified_data, nfolds=nfolds)
 
-  expect_type(folded_data[1:nfolds], "data.frame")
+  expect_type(folded_data[[1]], "data.frame")
   #expect_true(file.exists(groups), info = "Groups information should exist as a file")
   expect_length(folded_data, nfolds)
 })

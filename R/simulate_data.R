@@ -13,8 +13,9 @@
 simulate_data <- function(number_of_participants=3, covariance_matrix=diag(2), outcome_column=1, means=c(0,0)){
   library(MASS)
   sim_data <- mvrnorm(n=number_of_participants,mu=means,Sigma=covariance_matrix)
-  data=list()
-  data["y"] <- list(sim_data[,outcome_column])
-  data["x"] <- list(sim_data[,outcome_column*-1])
-  return(data.frame(data))
+  data <- data.frame(
+    y <- sim_data[, outcome_column],
+    x <- sim_data[, outcome_column*-1]
+  )
+  return(data)
 }
