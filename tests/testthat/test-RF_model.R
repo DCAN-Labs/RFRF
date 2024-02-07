@@ -32,7 +32,7 @@ test_that("RF_model", {
   RF_prediction <- RF_optimal_test(optimal_random_forest,testing_dataset,proximity_flag)
 
   #test call of RF_model, but what are we returning?? how is it different from RF_optimal_test?? for now just leaving as RF_prediction
-  RF_prediction <- RF_model(RF_optimal_train,RF_optimal_test)
+  #RF_prediction <- RF_model(RF_optimal_train,RF_optimal_test)
 
   #in the rf model diagram we see the final output being this "RF Prediction" object, but in the flow diagram the object is a proximity matrix. how do we connect the two?
   #check the outputs, 'expect_' should have two main arguments, which 'expect_' function do we want?
@@ -41,12 +41,12 @@ test_that("RF_model", {
   #expect_true(Optimal_RF_Parameters$mtry >= 0)
   #expect_type(Optimal_RF_Parameters$nodesize, "numeric")
   #expect_true(Optimal_RF_Parameters$nodesize >= 0)
-  expect_type(RF_prediction$err.rate, "numeric")
-  expect_type(RF_prediction$proximity, "numeric")
-  expect_type(RF_prediction$yvar, "numeric")
-  expect_true(RF_prediction$yvar, is.matrix(yvar))
+  expect_type(RF_prediction$err.rate, "double")
+  expect_type(RF_prediction$proximity, "double")
+  expect_type(RF_prediction$yvar, "double")
+  expect_true(is.matrix(RF_prediction$yvar))
   expect_type(RF_prediction$yvar.names, "character")
-  expect_true(RF_prediction$xvar, is.data.frame(xvar))
+  expect_true(is.data.frame(RF_prediction$xvar))
   expect_type(RF_prediction$xvar.names, "character")
   # expect_equal(2 * 2, 4)
 

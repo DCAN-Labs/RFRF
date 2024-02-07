@@ -1,13 +1,13 @@
 Package: RFRF
 Title: Functional Random Forest in R
 Version: 0.0.0.9000
-Authors@R: c(person("Eric", "Feczko", email = "ejfeczko@gmail.com", role = "cre"),person("Joao", "Guassi Moreira", email = "jguassi91@gmail.com", role = "aut"))
+Authors@R: c(person("Eric", "Feczko", email = "ejfeczko@gmail.com", role = "cre"),person("Jacob", "Lundquist", email = "lundq163@umn.edu", role = "aut"),person("Joao", "Guassi Moreira", email = "jguassi91@gmail.com", role = "aut"))
 Description: This package implements the Functional Random Forest approaches detailed in Feczko et al. "The Heterogeneity Problem in Psychiatry" (doi: 10.1016/j.tics.2019.03.009). This package uses the randomforestSRC and igraph packages to construct the RF model and identify subtypes respectively.
 Depends: R (>= 3.5.3)
 License: BSD 3.0
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1.9000
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

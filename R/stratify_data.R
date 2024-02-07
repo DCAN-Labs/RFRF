@@ -2,15 +2,16 @@
 #'
 #' this function provides a stratified dataset to be used by the split_data function.
 #' @param randomized_data dataframe of the randomized data returned by the randomize function
-#' @param groups information on how the stratified data will be grouped
+#' @param groups information on how the stratified data will be grouped (name of column, index of column, vector)
 #' @keywords stratify
 #' @export
 #' @examples
 #' simulate_data(number_of_participants=10, covariance_matrix=diag(2), outcome_column=1, means=c(0,0))
 #' randomized_data <- randomize(data=data, seed = 7)
-#' stratified_data <- stratify_by(randomized_data=randomized_data,groups=groups)
+#' stratified_data <- stratify_data(randomized_data=randomized_data,groups=groups)
 
-stratify_by <- function(randomized_data, groups){
+# do we need a stratify_by input if we already have groups??
+stratify_data <- function(randomized_data, groups){
   grouped_data <- split(randomized_data, groups, drop=FALSE)
   stratified_data = unlist(grouped_data, recursive = FALSE)
   return(data.frame(stratified_data))

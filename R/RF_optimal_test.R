@@ -20,7 +20,7 @@
 #' random_forest <- RF_Train(training_dataset,formula,mtry,nodesize,model_type)
 #' testing_dataset <- simulate_data(number_of_testing_participants,covariance_matrix,outcome_column,means)
 #' proximity <- TRUE
-#' Optimal_RF_Parameters <- RF_Test(object=random_forest,newdata=testing_dataset,proximity=TRUE)
+#' Optimal_RF_Parameters <- RF_Test(object=random_forest,newdata=testing_dataset,proximity=proximity)
 #' optimal_random_forest <- RF_optimal_train(data=training_dataset,formula=y~x,Optimal_RF_Parameters=NULL,model_type="rfsrc")
 #' RF_prediction <- RF_optimal_test(object=optimal_random_forest,newdata=testing_dataset,proximity_flag=TRUE)
 

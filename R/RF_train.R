@@ -3,10 +3,10 @@
 #' this function trains a random forest model with training data folds
 #' @param ntrain_folds number of training folds
 #' @param data the training dataset
-#' @param formula
-#' @param mtry
-#' @param nodesize
-#' @param model_type
+#' @param formula formula describing the model fit
+#' @param mtry number of variables to possibly split at each node
+#' @param nodesize minimum size of terminal node
+#' @param model_type which type of rfsrc to use
 #' @keywords RF_train
 #' @export
 #' @examples
@@ -15,7 +15,7 @@
 #' outcome_column <- 1
 #' means <- c(0,0)
 #' training_dataset <- simulate_data(number_of_training_participants,covariance_matrix,outcome_column,means)
-#' random_forest <- RF_Train(data=training_dataset,formula=y~x,mtry=NULL,nodesize=NULL,model_type="rfsrc")
+#' random_forest <- RF_train(data=training_dataset,formula=y~x,mtry=NULL,nodesize=NULL,model_type="rfsrc")
 
 
 RF_train <- function(data=training_dataset,formula=y~x,mtry=NULL,nodesize=NULL,model_type="rfsrc"){
