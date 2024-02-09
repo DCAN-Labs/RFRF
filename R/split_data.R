@@ -13,10 +13,8 @@
 #' train_and_test <- split_data(stratified_data=stratified_data,holdout_fraction=0.8)
 #' folded_data <- split_data(stratified_data=train_and_test$training_dataset,nfolds=5)
 
-
-# how do we potentially incorporate stratify_by and even_stratification??
 split_data <- function(stratified_data, holdout_fraction=0, nfolds=0){
-  if (holdout_fraction > 0){ #may need to edit this condition
+  if (holdout_fraction > 0){
     n = nrow(stratified_data)
     train_size = round(holdout_fraction * n)
 

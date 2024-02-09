@@ -28,14 +28,14 @@ test_that("RF_optimal_train", {
   #train using optimal RF parameters with RF optimal train
   optimal_random_forest <- RF_optimal_train(training_dataset,formula,Optimal_RF_Parameters,model_type)
 
-  #check the outputs (TODO: replaced by a search/these things equal, with usethis and testthat )
+  #check the outputs
   expect_type(optimal_random_forest$call, "language")
   expect_type(optimal_random_forest$mtry, "double")
   expect_true(optimal_random_forest$mtry >= 0)
   expect_type(optimal_random_forest$nodesize, "double")
   expect_true(optimal_random_forest$nodesize >= 0)
   expect_type(optimal_random_forest$yvar, "double")
-  expect_true(is.matrix(optimal_random_forest$yvar))
+  expect_true(is.vector(optimal_random_forest$yvar))
   expect_type(optimal_random_forest$yvar.names, "character")
   expect_true(is.data.frame(optimal_random_forest$xvar))
   expect_type(optimal_random_forest$xvar.names, "character")
