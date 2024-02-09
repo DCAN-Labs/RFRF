@@ -17,5 +17,8 @@ simulate_data <- function(number_of_participants=3, covariance_matrix=diag(2), o
     y <- sim_data[, outcome_column],
     x <- sim_data[, outcome_column*-1]
   )
+
+  colnames(data) <- c("y", "x")
+
   return(data)
 }

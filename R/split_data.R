@@ -20,11 +20,8 @@ split_data <- function(stratified_data, holdout_fraction=0, nfolds=0){
     n = nrow(stratified_data)
     train_size = round(holdout_fraction * n)
 
-    train_set = stratified_data[seq_len(train_size)]
-    test_set = stratified_data[-seq_len(train_size)]
-
-    training_dataset <- data.frame(train = train_set)
-    testing_dataset <- data.frame(test = test_set)
+    training_dataset <- stratified_data[1:train_size, ]
+    testing_dataset <- stratified_data[(train_size + 1):nrow(stratified_data), ]
 
     return(list(training_dataset = training_dataset, testing_dataset = testing_dataset))
   }else{
