@@ -34,6 +34,6 @@ test_that("Subtype_ID", {
 
   # check the outputs of Subtype_ID
   # need to build out expects
-  expect_type(subtypes$length, "integer")
-  expect_type(subtypes$sizes, "numeric")
+  expect_true(is.vector(subtypes$membership))
+  expect_type(subtypes$codelength, "double")
 })
