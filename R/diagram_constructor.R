@@ -8,18 +8,18 @@ flow_diagram="#stroke: #000000
 #spacing: 20
 #fontsize: 10
 #gutter: 20
-#.fullbox: visual=ellipse
+#.fullbox: #fill=#F5F5DC visual=ellipse
 #.trainbox: #fill=#FFFF00 visual=ellipse
 #.testbox: #fill=#00FFFF visual=ellipse
 #.RFbox: #fill=#FFFFFF
 #.proxmat: #fill=#FF007F visual=ellipse
 #.subtype: #fill=#00FF00 visual=ellipse
-[ <frame>RFRF flow diagram|
+[<frame>RFRF flow diagram|
 [<fullbox>Full Data] --:> [holdout]
 [holdout] --:> [<trainbox>Train Data]
 [holdout] --:> [<testbox>Test Data]
 [<trainbox>Train Data] --:> [cross_validation]
-[cross_validation] cv folds --:> [<trainbox>Train Folds]
+[cross_validation] --:> [<trainbox>Train Folds]
 [cross_validation] --:> [<testbox>Valid Fold]
 [Train Folds] tuning --:> [RF_train]
 [RF_train] selection --:> [RF_test]
@@ -27,8 +27,8 @@ flow_diagram="#stroke: #000000
 [RF_test] --:> [RF_model]
 [<trainbox>Train Data] train --:> [RF_model]
 [<testbox>Test Data] test --:> [RF_model]
-[RF_model] RF_prediction --:> [<proxmat>proximity_matrix]
-[<proxmat>proximity_matrix] --:> [Subtype_ID]
+[RF_model] --:> [<proxmat>RF_prediction]
+[<proxmat>RF_prediction] proximity_matrix --:> [Subtype_ID]
 [Subtype_ID] --:> [<subtype>subtypes]
 ]"
 
@@ -42,19 +42,21 @@ holdout_diagram="#stroke: #000000
 #spacing: 20
 #fontsize: 10
 #gutter: 20
+#.fullbox: #fill=#F5F5DC visual=ellipse
+#.inputbox: #fill=#F5F5DC
 #.databox: #fill=#00FFFF
 #.trainbox: #fill=#FFFF00
 [<frame> holdout diagram|
-[<databox>Input Data] -:> [read_file| file_type: string
+[<fullbox>Full Data] -:> [read_file| file_type: string
 file_name: string
 file_path: string | open()
 close()]
-[read_file] -:> [<databox>Full Data| data: data.frame
+[read_file] -:> [<inputbox>Input Data| data: data.frame
 ID_column: string
 outcome_column: string
 nrows: int
 ncols: int]
-[<databox>Full Data] -:> [holdout| data: Full Data
+[<inputbox>Input Data] -:> [holdout| data: Input Data
 seed: int
 groups: string
 holdout_fraction: 0-1
@@ -96,7 +98,13 @@ groups: string
 even_stratification: boolean | randomize()
 stratify_data()
 split_data()]
-[cross_validation] -:> [<databox>Train Data Folds|  nfolds: int
+[cross_validation] -:> [<databox>Train Data Folds|  nfold: int
+data: data.frame
+ID_column: string
+outcome_column: string
+nrows: int
+ncols: int]
+[cross_validation] -:> [<testbox>Valid Data Fold| nfold:int
 data: data.frame
 ID_column: string
 outcome_column: string
@@ -115,8 +123,8 @@ RF_train_diagram="#stroke: #000000
 #gutter: 20
 #.databox: #fill=#FFFF00
 #.forestbox: #fill=#FF1111
-[<frame> RF train diagram|
-[<databox>Train Data Folds| nfolds: int
+[<frame> RF_train diagram|
+[<databox>Train Data Folds| nfold: int
 data: data.frame
 ID_column: string
 outcome_column: string
@@ -164,20 +172,21 @@ yvar.names: string
 xvar: data.frame
 xvar.names: string
 forest: forest ]
-[<testbox>Test Data Fold|  data: data.frame
+[<testbox>Valid Data Fold| nfold:int
+data: data.frame
 ID_column: string
 outcome_column: string
 nrows: int
 ncols: int]
 [<forestbox> random_forest] -:> [RF_test | object: random_forest
-data: Test Data Fold
+data: Valid Data Fold
 proximity: boolean
 hyperparameter: string
 file.name: string
 | predict.rfsrc()
 write.tsv()
 get_auc()]
-[<testbox>Test Fold] -:> [RF_test]
+[<testbox>Valid Data Fold] -:> [RF_test]
 [RF_test] -:> [<optimalbox>optimal_RF_parameters | call: string
 mtry: int
 nodesize: int
@@ -200,7 +209,7 @@ RF_model_diagram="#stroke: #000000
 #.forestbox: #fill=#FF1111
 #.trainbox: #fill=#FFFF00
 #.predictbox: #fill=#FF007F
-[<frame> RF_model_diagram|
+[<frame> RF_model diagram|
 [<optimalbox>optimal_RF_parameters | call: string
 mtry: int
 nodesize: int
@@ -259,19 +268,20 @@ Subtype_ID_diagram="#stroke: #000000
 #gutter: 20
 #.testbox: #fill=#00FFFF
 #.subtype: #fill=#00FF00 visual=ellipse
+#.predictbox: #fill=#FF007F
 [<frame>Subtype_ID diagram|
-[RF_prediction | proximity: array
+[<predictbox>RF_prediction | proximity: array
 yvar: data.frame
 yvar.names: string
 xvar: data.frame
 xvar.names: string
 err.rate: float ]
-[RF_prediction] -:> [graph_from_adjacency_matrix |
+[<predictbox>RF_prediction] -:> [graph_from_adjacency_matrix |
 proximity_matrix: proximity
 mode: string
 weighted: boolean
 diag: boolean]
-[graph_from_adjacency_matrix] -:> [cluster_infomap |
+[graph_from_adjacency_matrix] proximity_graph -:> [cluster_infomap |
 proximity_graph: graph]
 [cluster_infomap] -:> [<subtype>subtypes]
 ]"
