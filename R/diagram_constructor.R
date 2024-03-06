@@ -297,7 +297,7 @@ interface_diagram="#stroke: #000000
 #.optimalbox: #fill=#FF7777
 #.fullbox: #fill=#F5F5DC visual=ellipse
 #.inputbox: #fill=#F5F5DC
-[<frame>Interface Diagram|[nfolds.txt | nfolds: list]
+[<frame>interface diagram|[nfolds.txt | nfolds: list]
 [nfolds.txt] -:> [interface_bash_wrapper | nfold: int
 data: Train Data]
 [<fullbox>Full Data] -:> [read_file| file_type: string
@@ -335,6 +335,7 @@ nomnoml(code = RF_train_diagram,png='RF_train_diagram.png')
 nomnoml(code = RF_test_diagram,png='RF_test_diagram.png')
 nomnoml(code = RF_model_diagram,png='RF_model_diagram.png')
 nomnoml(code = Subtype_ID_diagram,png='Subtype_ID_diagram.png')
+nomnoml(code = interface_diagram,png='interface_diagram.png')
 
 
 
