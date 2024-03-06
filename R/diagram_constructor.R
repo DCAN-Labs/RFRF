@@ -110,6 +110,7 @@ ID_column: string
 outcome_column: string
 nrows: int
 ncols: int]
+[cross_validation] -:> [nfolds.txt]
 ]"
 
 
@@ -293,10 +294,37 @@ interface_diagram="#stroke: #000000
 #spacing: 20
 #fontsize: 10
 #gutter: 20
-#.testbox: #fill=#00FFFF
-[<frame>Interface Diagram|
-
-[<testbox> TEST]
+#.optimalbox: #fill=#FF7777
+#.fullbox: #fill=#F5F5DC visual=ellipse
+#.inputbox: #fill=#F5F5DC
+[<frame>interface diagram|[nfolds.txt | nfolds: list]
+[nfolds.txt] -:> [interface_bash_wrapper | nfold: int
+data: Train Data]
+[<fullbox>Full Data] -:> [read_file| file_type: string
+file_name: string
+file_path: string | open()
+close()]
+[read_file] -:> [<inputbox>Input Data| data: data.frame
+ID_column: string
+outcome_column: string
+nrows: int
+ncols: int]
+[<inputbox>Input Data] -:> [interface_bash_wrapper]
+[interface_bash_wrapper] -:> [call_script.R | formula: string
+mtry: int
+nodesize: int
+proximity: boolean
+modularity: boolean |
+tune.rfsrc()
+RF_train()
+RF_test()
+]
+[call_script.R] -:> [<optimalbox>optimal_RF_parameters | call: string
+mtry: int
+nodesize: int
+err.rate: float
+proximity: array
+modularity: int]
 ]"
 
 #diagram visualization (saving may not work properly within RStudio)
@@ -307,6 +335,7 @@ nomnoml(code = RF_train_diagram,png='RF_train_diagram.png')
 nomnoml(code = RF_test_diagram,png='RF_test_diagram.png')
 nomnoml(code = RF_model_diagram,png='RF_model_diagram.png')
 nomnoml(code = Subtype_ID_diagram,png='Subtype_ID_diagram.png')
+nomnoml(code = interface_diagram,png='interface_diagram.png')
 
 
 
