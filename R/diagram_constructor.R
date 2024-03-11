@@ -73,6 +73,7 @@ ID_column: string
 outcome_column: string
 nrows: int
 ncols: int]
+[holdout] -:> [holdout.txt]
 ]"
 
 #cross_validation diagram

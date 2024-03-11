@@ -1,6 +1,6 @@
 test_that("holdout", {
 
-  library("RFRF")
+  library(RFRF)
   #declare our expected input variables
   number_of_participants <- 12
   covariance_matrix <- diag(2)
@@ -22,12 +22,18 @@ test_that("holdout", {
   #produce the split dataset into train and test
   train_and_test <- split_data(stratified_data=stratified_data, holdout_fraction=holdout_fraction)
 
-  # incorporate groups check in expect_
+  #incorporate groups check in expect_
   expect_type(train_and_test$training_dataset, "list")
   expect_type(train_and_test$testing_dataset, "list")
   expect_length(train_and_test, 2)
   expect_equal(nrow(train_and_test$training_dataset) + nrow(train_and_test$testing_dataset), nrow(stratified_data))
-  # checks to see if training dataset is larger for now
+  expect_true(file.exists("holdout.txt"), info = "holdout.txt file should be created")
+  #check if the file contains the correct number of lines
+  file_contents <- readLines("holdout.txt")
+  expected_lines <- 2
+  expect_length(file_contents, expected_lines, info = "holdout.txt should have the correct number of lines")
+  unlink("holdout.txt")
+  #checks to see if training dataset is larger for now
   ratio <- round(nrow(train_and_test$training_dataset)/nrow(stratified_data))
   expect_equal(ratio, 1)
   #expect_true(file.exists(groups), info = "Groups information should exist as a file")
