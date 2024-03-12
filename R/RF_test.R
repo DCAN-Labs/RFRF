@@ -17,9 +17,9 @@
 #' nodesize <- 1
 #' formula <- y~x
 #' model_type <- rfsrc()
-#' random_forest <- RF_Train(training_dataset,formula,mtry,nodesize,model_type)
+#' random_forest <- RF_train(training_dataset,formula,mtry,nodesize,model_type)
 #' testing_dataset <- simulate_data(number_of_testing_participants,covariance_matrix,outcome_column,means)
-#' Optimal_RF_Parameters <- RF_Test(object=random_forest,newdata=testing_dataset,proximity=TRUE)
+#' Optimal_RF_Parameters <- RF_test(object=random_forest,newdata=testing_dataset,proximity=TRUE)
 
 RF_test <- function(object=random_forest,newdata=testing_dataset,proximity_flag=TRUE){
   library(randomForestSRC)

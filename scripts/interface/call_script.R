@@ -3,18 +3,22 @@
 library(RFRF)
 
 #load input data
+input_data_path <- INPUT_DATA_PATH_VAR
+input_data_ext <- INPUT_DATA_EXT_VAR
+input_data_file <- INPUT_DATA_FILE_VAR
 input_data <- read_file(input_data_path, input_data_ext, input_data_file)
 
 #split data into train and test sets
-train_data <- input_data[TRAIN_INDICES_PLACEHOLDER, ]
-test_data <- input_data[TEST_INDICES_PLACEHOLDER, ]
+train_data <- input_data[TRAIN_INDICES, ]
+test_data <- input_data[TEST_INDICES, ]
 
-# Train the model
-model <- train_model(train_data, model_type)
+#train the model
+model_type <- MODEL_TYPE_VAR
+random_forest <- RF_train(data=train_data,formula=y~x,mtry=NULL,nodesize=NULL,model_type=model_type)
 
-# Evaluate the model
-evaluation_metrics <- evaluate_model(model, test_data)
+#test the model
+Optimal_RF_Parameters <- RF_test(object=random_forest,newdata=test_data,proximity=TRUE)
 
-# Save the model and evaluation metrics
-save_model(model, paste0("model_", model_type, "_fold_", fold_number, ".rds"))
-save_metrics(evaluation_metrics, paste0("metrics_", model_type, "_fold_", fold_number, ".csv"))
+# Save the model and parameters
+save(random_forest, paste0("model_", model_type, "_fold_", fold_number, ".rds"))
+save(Optimal_RF_Parameters, paste0("parameters_", model_type, "_fold_", fold_number, ".rds"))

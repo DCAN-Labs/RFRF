@@ -35,8 +35,13 @@ for (i in seq_len(nrow(nfolds_data))) {
 
   #modify the template script with the appropriate train and test indices
   modified_script <- template_script
-  modified_script <- gsub("TRAIN_INDICES_PLACEHOLDER", paste(train_indices, collapse = ", "), modified_script)
-  modified_script <- gsub("TEST_INDICES_PLACEHOLDER", paste(test_indices, collapse = ", "), modified_script)
+  modified_script <- gsub("TRAIN_INDICES_VAR", paste(train_indices, collapse = ", "), modified_script)
+  modified_script <- gsub("TEST_INDICES_VAR", paste(test_indices, collapse = ", "), modified_script)
+  modified_script <- gsub("INPUT_DATA_PATH_VAR", input_data_path, modified_script)
+  modified_script <- gsub("INPUT_DATA_EXT_VAR", input_data_ext, modified_script)
+  modified_script <- gsub("INPUT_DATA_FILE_VAR", input_data_file, modified_script)
+  modified_script <- gsub("MODEL_TYPE_VAR", model_type, modified_script)
+
 
   #write the modified script to a new file in the run_files directory
   run_file_name <- file.path(run_files_dir, paste0("run_file_fold", fold_number, ".R"))
