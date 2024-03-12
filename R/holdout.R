@@ -26,5 +26,17 @@ holdout <- function(file_path=file_path, seed=seed, groups=groups, holdout_fract
   randomized_data = randomize(data, seed)
   stratified_data = stratify_data(randomized_data, groups)
   train_and_test = split_data(stratified_data, holdout_fraction)
+
+  file_name <- "holdout.txt"
+  file_conn <- file(file_name, "w")
+
+  train_indices <- unlist(train_and_test$train)
+  test_indices <- unlist(train_and_test$test)
+
+  cat("Train indices: ", paste(train_indices, collapse = ", "), "\n", file = file_conn, append = TRUE)
+  cat("Test indices: ", paste(test_indices, collapse = ", "), "\n", file = file_conn, append = TRUE)
+
+  close(file_conn)
+
   return(train_and_test)
 }
